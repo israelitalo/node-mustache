@@ -1,0 +1,14 @@
+{{>partials/header}}
+<h2>Nome: {{name}}</h2>
+{{#mostrarIdade}}
+<h3>idade: {{idade}}</h3>
+{{/mostrarIdade}}
+
+{{^stacks}}
+<ul>
+    {{#stacks}}
+    <li>Linguagem: {{nome}}, nota: {{nota}}</li>
+    {{/stacks}}
+</ul>
+{{/stacks}}
+{{>partials/footer}}
