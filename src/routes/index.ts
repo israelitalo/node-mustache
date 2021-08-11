@@ -1,34 +1,16 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import PageController from '../controllers/PageController';
+import SearchController from '../controllers/SearchController';
 
 const router = Router();
 
-router.get("/", (request: Request, response: Response) => {
-    const name = "Israel";
-    const idade = 29;
-    let mostrarIdade = true;
+const pageController = new PageController();
+const searchController = new SearchController();
 
-    idade < 30 ? mostrarIdade = true : mostrarIdade = false;
-
-    const stacks: any = [];
-
-    return response.render("pages/home", {
-        name,
-        idade,
-        mostrarIdade,
-        stacks
-    });
-});
-
-router.get("/user/:id", (request: Request, response: Response) => {
-    const { id } = request.params;
-
-    return response.json(id);
-});
-
-router.post("/user", (request: Request, response: Response) => {
-    const { name, email, password } = request.body;
-
-    return response.json({ name, email, password });
-});
+router.get("/", pageController.index);
+router.get("/dogs", pageController.getDogs);
+router.get("/cats", pageController.getCats);
+router.get("/fishes", pageController.getFishes);
+router.get("/search", searchController.search);
 
 export default router;

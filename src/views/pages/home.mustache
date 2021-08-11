@@ -1,14 +1,28 @@
 {{>partials/header}}
-<h2>Nome: {{name}}</h2>
-{{#mostrarIdade}}
-<h3>idade: {{idade}}</h3>
-{{/mostrarIdade}}
 
-{{^stacks}}
-<ul>
-    {{#stacks}}
-    <li>Linguagem: {{nome}}, nota: {{nota}}</li>
-    {{/stacks}}
-</ul>
-{{/stacks}}
+{{#banner}}
+<section class="banner" style="background-image: url('images/{{image}}')">{{title}}</section>
+{{/banner}}
+
+<h2>Todos os animais disponíveis para adoção</h2>
+
+<div class="container list">
+
+    {{#pets}}
+    <div class="item">
+        <img src="images/{{image}}" class="item--image" />
+        <div class="item--name">{{name}}</div>
+        <div class="item--color">{{color}}</div>
+        <div class="item--genre">{{genero}}</div>
+    </div>
+    {{/pets}}
+
+</div>
+
+{{^pets}}
+<div class="container no-list">
+    <h2>Nenhum animal encontrado</h2>
+</div>
+{{/pets}}
+
 {{>partials/footer}}
